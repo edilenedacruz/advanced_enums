@@ -12,21 +12,15 @@ class VendingMachine
   end
 
   def snacks_by_name
-    inventory.map do |snack|
-      snack.name
-    end
+    inventory.map { |snack| snack.name}
   end
 
   def how_many_snacks
-    inventory.group_by do |snack|
-      snack.quantity
-    end
+    inventory.group_by { |snack| snack.quantity }
   end
 
   def inventory_by_alphabet
-    inventory.group_by do |snack|
-      snack.name[0]
-    end
+    inventory.group_by { |snack| snack.name[0] }
   end
 
   def total_num_items
@@ -36,9 +30,7 @@ class VendingMachine
   end
 
   def first_letters
-    inventory.map do |snack|
-      snack.name[0]
-    end.join
+    inventory.map { |snack| snack.name[0] }.join
   end
 
 end
