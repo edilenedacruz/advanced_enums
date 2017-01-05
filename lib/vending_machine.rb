@@ -18,10 +18,27 @@ class VendingMachine
   end
 
   def how_many_snacks
-    inventory.group_by do |snack, quantity|
-
-      quantity
+    inventory.group_by do |snack|
+      snack.quantity
     end
-    binding.pry
   end
+
+  def inventory_by_alphabet
+    inventory.group_by do |snack|
+      snack.name[0]
+    end
+  end
+
+  def total_num_items
+    inventory.reduce(0) do |sum, snack|
+      sum + snack.quantity
+    end
+  end
+
+  def first_letters
+    inventory.map do |snack|
+      snack.name[0]
+    end.join
+  end
+
 end
