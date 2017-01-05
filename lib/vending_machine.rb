@@ -1,5 +1,4 @@
 require_relative 'snack'
-require 'pry'
 
 class VendingMachine
   attr_reader :inventory
@@ -31,6 +30,14 @@ class VendingMachine
 
   def first_letters
     inventory.map { |snack| snack.name[0] }.join
+  end
+
+  def change_indexes
+    n = []
+    inventory.each_with_index do |snack, index|
+      n << index + 1
+    end
+    n
   end
 
 end
